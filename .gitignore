@@ -1,0 +1,7 @@
+src/**/__pycache__/
+src/venv/
+*.pyc
+
+volumes/
+
+*.yaml
