@@ -19,6 +19,9 @@ def initialize_pdf(mysql_db):
     forum_list = mysql_repository.find_all_forum(mysql_db)
     print(len(forum_list))
     for forum in forum_list[:20]:
+        if forum["text"] is not None:
+            print(f"Skip {forum['id']}")
+            continue
         pdf_url = forum["pdf"]
         pdf_key = forum["pdf"].split("/")[-1].split(".")[0]
         md_text = pdf_to_text(pdf_key, pdf_url)
