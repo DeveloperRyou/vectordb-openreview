@@ -22,5 +22,6 @@ def initialize_pdf(mysql_db):
         pdf_url = forum["pdf"]
         pdf_key = forum["pdf"].split("/")[-1].split(".")[0]
         md_text = pdf_to_text(pdf_key, pdf_url)
-        save_md_text(pdf_key, md_text)
+        # save_md_text(pdf_key, md_text)
+        mysql_repository.update_forum_with_text(mysql_db, forum["id"], md_text)
         

@@ -5,3 +5,5 @@ src/venv/
 volumes/
 
 *.yaml
+
+.DS_Store

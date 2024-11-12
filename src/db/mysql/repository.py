@@ -39,3 +39,17 @@ def find_review_by_forum_id(db, forum_id):
         return result[0]
     except mysql.connector.Error as err:
         print(f"Error: {err}")
+
+def update_forum_with_text(db, forum_id, text):
+    try:
+        cursor = db.cursor(dictionary=True)
+        cursor.execute("""
+        UPDATE forum SET text = %s WHERE id = %s
+        """, (
+            text,
+            forum_id,
+        ))
+        db.commit()
+        cursor.close()
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
